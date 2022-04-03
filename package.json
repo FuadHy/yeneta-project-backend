@@ -1,0 +1,29 @@
+  {
+  "name": "senior_project_yeneta_tutors",
+  "version": "1.0.0",
+  "description": "This is a Senior Project on web-based portal for Yeneta Online Tutor ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon __server__.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emanuel-Afro/Yeneta-Online-Tutor-Portal.git"
+  },
+  "author": "Amanuel Mulugeta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emanuel-Afro/Yeneta-Online-Tutor-Portal/issues"
+  },
+
+  "homepage": "https://github.com/Emanuel-Afro/Yeneta-Online-Tutor-Portal#readme",
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.8",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.15"
+  }
+}
