@@ -42,15 +42,15 @@ const catchAsync = require('../../__utils__/__utils__');
             }
         })
     })
-    exports.CreateMentor = catchAsync(async(req,res,next)=>{
-        const mentor = await Mentor.create(req.body);
-        res.status(200).json({
-            status:'Sucess',
-            data:{
-               mentor
-            }
-        })
-    })
+    // exports.CreateMentor = catchAsync(async(req,res,next)=>{
+    //     const mentor = await Mentor.create(req.body);
+    //     res.status(200).json({
+    //         status:'Sucess',
+    //         data:{
+    //            mentor
+    //         }
+    //     })
+    // })
     exports.UpdateMentors = catchAsync(async(req,res,next)=>{
         const mentor = await Mentor.findByIdAndUpdate(req.params.id,req.body,{
             new:true.valueOf,
