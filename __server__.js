@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 require('dotenv').config({path: './config.env'})
 const app = require('./__app__');
-const Students = require('./Models/StudentModel')
-const PostWork= require('./Models/PostWorkModel')
+const Students = require('./Students/Student_Details/Schema/StudentModel')
+const PostWork= require('./Students/Post_work/Schema/PostWorkModel')
+const Mentor = require('./Mentors/Schema/MentorModel')
+const FeedBack = require('./__FeedBack__');
 mongoose.connect(process.env.DATABASE_LOCAL,{
 
 }).then(()=>console.log('Connected to Yeneta_Tutors DATABASE Sucessfully!!!'))
