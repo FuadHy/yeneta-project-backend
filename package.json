@@ -1,0 +1,39 @@
+{
+  "name": "superfaceai",
+  "version": "1.0.0",
+  "description": "This is a Senior Project on web-based portal for Yeneta Online Tutor ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon __server__.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emanuel-Afro/Yeneta-Online-Tutor-Portal.git"
+  },
+  "author": "Amanuel Mulugeta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emanuel-Afro/Yeneta-Online-Tutor-Portal/issues"
+  },
+  "homepage": "https://github.com/Emanuel-Afro/Yeneta-Online-Tutor-Portal#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.3",
+    "mongo-client": "^0.2.1",
+    "mongodb": "^4.6.0",
+    "mongoose": "^6.2.8",
+    "morgan": "^1.10.0",
+    "ndb": "^1.1.5",
+    "nodemailer": "^6.7.3",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7",
+    "socket.io": "^4.5.1",
+    "validator": "^13.7.0",
+    "validators": "^0.3.1"
+  }
+}
