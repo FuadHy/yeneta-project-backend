@@ -1,3 +1,4 @@
+const crypto = require('crypto')
 const mongoose = require('mongoose');
 const validator = require('validator')
 const bcrypt = require('bcrypt');
@@ -41,7 +42,8 @@ const StudentSchema = new mongoose.Schema({
         type:String,
         required:[true,'Enter your password'],
         unique:true,
-        minlength:8
+        minlength:8,
+        select: false,
     },
     ConfirmPassword:{
         type: String,
@@ -66,6 +68,8 @@ const StudentSchema = new mongoose.Schema({
         type:String,
         required:[true,'Student must write Discription']
     },
+    PasswordResetToken: String,
+    PasswordResetExpires: Date,
 })
 StudentSchema.pre('save',async function(next){
     if(!this.isModified('Password')) return next();
@@ -74,5 +78,18 @@ StudentSchema.pre('save',async function(next){
     this.ConfirmPassword = undefined;
     next()
 })
+
+StudentSchema.methods.correctPassword = async function(candidatePassword,studentPassword){
+    return await bcrypt.compare(candidatePassword, studentPassword) 
+}
+StudentSchema.methods.createPasswordResetToken = function(){
+    const resetToken = crypto.randomBytes(32).toString('hex');
+    console.log({resetToken},this.PasswordResetToken)
+
+this.PasswordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+
+this.PasswordResetExpires = Date.now() + 10 * 60 * 1000;
+return resetToken;
+}
 const Student = mongoose.model('Student',StudentSchema)
 module.exports = Student;

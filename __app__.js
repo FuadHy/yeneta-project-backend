@@ -12,16 +12,15 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/../public`))
 
 app.use(['/Yeneta/students/home','/Yeneta/students/signup','/Yeneta/students/login',
-'/Yeneta/students/update_profile'],StudentRouter);
-//==========================================================
+'/Yeneta/students/update_profile','/Yeneta/students/forgetPassword'],StudentRouter);
+//================STUDENTS==========================================
 app.use(['/Yeneta/post_work_students','/Yeneta/update_posted_work',
-'/Yeneta/feed_back_students','/Yeneta/chat_room',
-'/Yeneta/get_posted_works'],PostWorkRouter);
-//===============MENTORS======================
-app.use(['/Yeneta/mentors/home','/Yeneta/mentors/register_mentors','/Yeneta/mentors/login_mentors',
-'/Yeneta/mentors/manage_profile_mentors'
-,'/Yeneta/mentors/apply_post'],MentorRouter)
-app.use(['/Yeneta/Admin/delete students','/Yeneta/Admin/delete mentors'],AdminRouter)
+'/Yeneta/feed_back_students','/Yeneta/chat_room',],PostWorkRouter);
+//===============MENTORS=====================================
+app.use(['/Yeneta/mentors/home','/Yeneta/mentors/signup','/Yeneta/mentors/login_mentors',
+'/Yeneta/mentors/update_profile','/Yeneta/mentors/apply_post','/Yeneta/mentors/forgetPassword'],MentorRouter)
+//===============ADMIN========================================
+app.use(['/Yeneta/Admin/home','/Yeneta/Admin/delete_students','/Yeneta/Admin/delete_mentors'],AdminRouter)
 
 
 

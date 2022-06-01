@@ -43,6 +43,14 @@ const MentorSchema = new mongoose.Schema({
     Photo:{
         type: String,
     },
+    CV:{
+        type: String,
+        required:[true,'Please enter your CV!!!']
+    },
+    Estimated_Price:{
+        type: Number,
+        required:[true,'Estimated_Price is mandatory']
+    },
     Phone:{
         type:Number,
         required:[true,'Please enter your phone number']
@@ -51,10 +59,15 @@ const MentorSchema = new mongoose.Schema({
         type:String,
         required:[true,'Enter your Educational Level']
     },
+    Experiance:{
+        type:String,
+        required:[true,'Enter Your Experiance']
+    },
     Description:{
         type:String,
         required:[true,'Enter short description about your self']
     },
+    
 })
 MentorSchema.pre('save',async function(next){
     if(!this.isModified('Password')) return next();

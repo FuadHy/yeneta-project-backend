@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 const PostWorkSchema = new mongoose.Schema({
-    Student_First_Name:{
+    Title:{
         type: String,
         required:[true,'A Student must have a FirstName'],
         maxlength:[40,'A Student FirstName must have less than or equal then 40 characters'],
       //  minlength:[10,'A Student LastName must have more than or equal than 10 characters']
     },
-    Student_Last_Name:{
-        type: String,
-        required:[true,'A Student must have a LastName'],
-        maxlength:[40,'A Student LastName must have less than or equal then 40 characters '],
-     //   minlength:[10,'A Student LastName must have more than or equal than 10 characters']
+    // Student_Last_Name:{
+    //     type: String,
+    //     required:[true,'A Student must have a LastName'],
+    //     maxlength:[40,'A Student LastName must have less than or equal then 40 characters '],
+    //  //   minlength:[10,'A Student LastName must have more than or equal than 10 characters']
         
-    },
+    // },
    Grade_level:{
         type:Number,
         required:[true,'Student must submit Grade Level']
@@ -35,7 +35,7 @@ const PostWorkSchema = new mongoose.Schema({
   },
   Experiance:{
     type:String,
-    required:[true,'Enter your Experiance level']
+    required:[true,'Enter the Experiance level you want']
   },
   Location:{
       type:String,

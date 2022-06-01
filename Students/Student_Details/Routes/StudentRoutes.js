@@ -5,6 +5,9 @@ const AuthController = require('../Controller/AuthController');
 const router = express.Router()
 
 router.post('/signup',AuthController.Signup_Student);
+router.post('/login',AuthController.login_Students);
+router.post('/forgetPassword',AuthController.forgetPassword);
+router.patch('/resetPassword/:token',AuthController.resetPassword);
 
 
 router.route('/').get(StudentController.GetAllMentors);
