@@ -45,10 +45,10 @@ exports.login_Students = catchAsync(async(req,res,next)=>{
     console.log(student)
  
     if(!student || !(await student.correctPassword(password, student.Password))){
-        return next(res.status(401).json({
+        return res.json({
             status: 'Error',
             error:'Incorrect Email or Password!!'
-        }))
+        })
     }
 
     const token = signToken(student._id);
