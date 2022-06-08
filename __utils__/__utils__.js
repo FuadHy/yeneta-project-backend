@@ -15,13 +15,13 @@ const SendErrDevelopmet = (err,res)=>{
     })
 }
 module.exports = catchAsync = fn=>{
-    return(req,res,next)=>{
+    return (req,res,next)=>{
         fn(req,res,next).catch(next);
-if(process.env.NODE_ENV === 'developement'){
-    SendErrDevelopmet(err,res)
-}
-else if(process.env.NODE_ENV === 'production'){
-    SendErrProduction(err,res)
-}
+// if(process.env.NODE_ENV === 'developement'){
+//     SendErrDevelopmet(err,res)
+// }
+// else if(process.env.NODE_ENV === 'production'){
+//     SendErrProduction(err,res)
+// }
     }
 }
