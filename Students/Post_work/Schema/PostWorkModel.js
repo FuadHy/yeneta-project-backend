@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 const PostWorkSchema = new mongoose.Schema({
     Title:{
         type: String,
@@ -6,13 +8,10 @@ const PostWorkSchema = new mongoose.Schema({
         maxlength:[40,'A Student FirstName must have less than or equal then 40 characters'],
       //  minlength:[10,'A Student LastName must have more than or equal than 10 characters']
     },
-    // Student_Last_Name:{
-    //     type: String,
-    //     required:[true,'A Student must have a LastName'],
-    //     maxlength:[40,'A Student LastName must have less than or equal then 40 characters '],
-    //  //   minlength:[10,'A Student LastName must have more than or equal than 10 characters']
-        
-    // },
+    Student: {
+        type: Schema.Types.ObjectId,
+        ref: 'Student'
+    },
    Grade_level:{
         type:Number,
         required:[true,'Student must submit Grade Level']

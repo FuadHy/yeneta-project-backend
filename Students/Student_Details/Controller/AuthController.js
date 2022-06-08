@@ -10,9 +10,11 @@ const signToken = id => {
     })
 }
 
-exports.Signup_Student = catchAsync(async(req,res,next)=>{
+exports.Signup_Student = catchAsync(async (req,res,next)=>{
+    console.log('ppp')
     const NewStudent = await Student.create(req.body)
     const token = signToken(NewStudent._id)
+   
 
 res.status(201).json({
     status: 'Success',
@@ -25,8 +27,9 @@ res.status(201).json({
 
 
 
-exports.login_Students =catchAsync(async(req,res,next)=>{
+exports.login_Students = catchAsync(async(req,res,next)=>{
     const email = req.body.Email;
+    console.log('ddd')
     const password = req.body.Password;
     if(!email || !password){
        next() 
@@ -35,11 +38,13 @@ exports.login_Students =catchAsync(async(req,res,next)=>{
            error: 'Email or Password is incorrect!!'
        })
     }
-    await student.save({validateBeforeSave: false});
+    
+    // await student.save({validateBeforeSave: false});
 
-    const student = await Student.findOne({email }).select('+password')
-
-    if(!student || await student.correctPassword(password,student.password)){
+    const student = await Student.findOne({ Email: email }).select('+Password')
+    console.log(student)
+ 
+    if(!student || !(await student.correctPassword(password, student.Password))){
         return next(res.status(401).json({
             status: 'Error',
             error:'Incorrect Email or Password!!'
@@ -47,9 +52,11 @@ exports.login_Students =catchAsync(async(req,res,next)=>{
     }
 
     const token = signToken(student._id);
+    student.Password = undefined
     res.status(200).json({
         status: 'Sucess',
-        token
+        token,
+        student        
     })
 })
 

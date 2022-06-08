@@ -76,5 +76,9 @@ MentorSchema.pre('save',async function(next){
     this.ConfirmPassword = undefined;
     next()
 })
+
+MentorSchema.methods.correctPassword = async function(candidatePassword,studentPassword){
+    return await bcrypt.compare(candidatePassword, studentPassword) 
+}
 const Mentor = mongoose.model('Mentor',MentorSchema)
 module.exports = Mentor;

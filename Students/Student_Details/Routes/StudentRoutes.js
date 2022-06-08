@@ -4,7 +4,8 @@ const MentorController = require('../../../Mentors/Controllers/MentorController'
 const AuthController = require('../Controller/AuthController');
 const router = express.Router()
 
-router.post('/signup',AuthController.Signup_Student);
+router.post('/signup', StudentController.CreateStudents);
+router.post('/update/:id', StudentController.UpdateStudents);
 router.post('/login',AuthController.login_Students);
 router.post('/forgetPassword',AuthController.forgetPassword);
 router.patch('/resetPassword/:token',AuthController.resetPassword);

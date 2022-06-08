@@ -57,8 +57,8 @@ exports.UpdateStudents = catchAsync(async(req,res,next)=>{
     new:true,
     runValidators:true,
     })
-    res.status(200).json({
-        status: 'Success',
+    res.json({
+        status: 'Sucess',
         data:{
             student
         }

@@ -24,14 +24,14 @@ const StudentSchema = new mongoose.Schema({
         
     },
     Date_Of_Birth:{
-     type:Date,
+     type: Date,
          default:Date.now()
   },
     Phone:{
         type:String,
         required:[true,'Must add a phone number'],
     },
-    Email:{
+    Email:{     
         type:String,
         required:[true,'Student must have E-mail adress'],
         validate:[validator.isEmail,'Please provide a valid Email'],

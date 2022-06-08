@@ -5,10 +5,13 @@ const app = require('./__app__');
 const Students = require('./Students/Student_Details/Schema/StudentModel')
 const PostWork= require('./Students/Post_work/Schema/PostWorkModel')
 const Mentor = require('./Mentors/Schema/MentorModel')
+const Admin = require('./Admin/Schema/AdminModel')
 const FeedBack = require('./__FeedBack__');
+
+
 mongoose.connect(process.env.DATABASE_LOCAL,{
 
-}).then(()=>console.log('Connected to Yeneta_Tutors DATABASE Sucessfully!!!'))
+}).then(()=>console.log('Connected to Yeneta_Tutors DATABASE Sucessfully!!!')).catch(e => console.log(e))
 const port =3737;
 
 

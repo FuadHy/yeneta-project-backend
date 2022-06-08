@@ -2,6 +2,8 @@ const Mentor = require('../Schema/MentorModel');
 const catchAsync = require('../../__utils__/__utils__')
 require('dotenv').config({path: '../../../config.env'})
 const email = require('../../__utils__/email');
+const jwt = require('jsonwebtoken');
+
 const signToken = id => {
     return jwt.sign({ id },process.env.JWT_SECRET,{
         expiresIn: process.env.JWT_EXPIRES_IN
@@ -10,15 +12,15 @@ const signToken = id => {
 
 exports.Signup_Mentor = catchAsync(async(req,res,next)=>{
     const NewMentor = await Mentor.create(req.body)
-    const token = signToken(NewMentor._id)
-
-res.status(201).json({
-    status: 'Success',
-    token,
-    data:{
-        mentor: NewMentor
-    }
-})
+    // const token = signToken(NewMentor._id)
+    NewMentor.Password = undefined
+    NewMentor.PasswordConfirm = undefined
+    res.status(201).json({
+        status: 'Success',
+        data:{
+            mentor: NewMentor
+        }
+    })
 })
 
 
@@ -33,11 +35,11 @@ exports.login_Mentor =catchAsync(async(req,res,next)=>{
            error: 'Email or Password is incorrect!!'
        })
     }
-    await mentor.save({validateBeforeSave: false});
+    // await mentor.save({validateBeforeSave: false});
 
-    const mentor = await Mentor.findOne({email }).select('+password')
+    const mentor = await Mentor.findOne({Email: email }).select('+Password')
 
-    if(!mentor || await mentor.correctPassword(password,mentor.password)){
+    if(!mentor || !(await mentor.correctPassword(password,mentor.Password))){
         return next(res.status(401).json({
             status: 'Error',
             error:'Incorrect Email or Password!!'
@@ -45,9 +47,12 @@ exports.login_Mentor =catchAsync(async(req,res,next)=>{
     }
 
     const token = signToken(mentor._id);
+    mentor.Password = undefined
+    mentor.PasswordConfirm = undefined
     res.status(200).json({
         status: 'Sucess',
-        token
+        token,
+        mentor
     })
 })
 
