@@ -12,7 +12,7 @@ const FeedBack = require('./__FeedBack__');
 mongoose.connect(process.env.DATABASE_LOCAL,{
 
 }).then(()=>console.log('Connected to Yeneta_Tutors DATABASE Sucessfully!!!')).catch(e => console.log(e))
-const port =3737;
+const port = process.env.PORT || 3737;
 
 
 app.listen(port,()=>{
