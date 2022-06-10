@@ -4,6 +4,7 @@ require('dotenv').config({path: '../../../config.env'})
 const PostWork = require('../Schema/PostWorkModel');
 const catchAsync = require('../../../__utils__/__utils__');
 const jwt = require('jsonwebtoken');
+const Student = require('../../Student_Details/Schema/StudentModel');
 
 //==============POST WORK=====================
 exports.CreateWorks = catchAsync(async(req,res,next)=>{
@@ -54,6 +55,8 @@ let query = PostWork.find(JSON.parse(queryStr))
 })
 exports.GetPostedWork = catchAsync(async(req,res,next)=>{
     const work = await PostWork.findById(req.params.id);
+    let student = await Student.findById(work.Student)
+    work.Student = student
     res.status(200).json({
         status:'Sucess',
         data:{

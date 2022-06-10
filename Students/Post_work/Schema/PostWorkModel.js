@@ -40,7 +40,10 @@ const PostWorkSchema = new mongoose.Schema({
       type:String,
       required:[true,'You have to enter your location'],
 
-  }
+  },
+  Description: {
+    type:String
+}
 })
 const PostWork = mongoose.model('PostWork',PostWorkSchema)
 module.exports = PostWork;
