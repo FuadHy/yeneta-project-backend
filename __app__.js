@@ -16,7 +16,7 @@ const io = new Server( server, {
         origin: '*',
       }
 })
-// socket begin //
+// socket begin
 
 io.on('connection', socket => {
     socket.on('joinRoom', ({ id, room, name }) => {
@@ -37,7 +37,7 @@ io.on('connection', socket => {
           name}
         );
   
-      // Send users and room info
+    // Send users and room info
     //   io.to(user.room).emit('roomUsers', {
     //     room: user.room,
     //     users: []
