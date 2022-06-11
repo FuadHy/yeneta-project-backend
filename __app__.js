@@ -16,7 +16,7 @@ const io = new Server( server, {
         origin: '*',
       }
 })
-// socket begin
+// socket begin //
 
 io.on('connection', socket => {
     socket.on('joinRoom', ({ id, room, name }) => {
